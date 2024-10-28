@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>DataFilm</title>
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <h1>Hi</h1>
+    <h1>Liste des Films</h1>
+    <div id="movies">
+        {% for movie in movies %}
+            <div class="movie-card">
+                <img src="{{ movie.poster_url }}" alt="Poster de {{ movie.title }}" class="movie-poster">
+                <h2>{{ movie.title }}</h2>
+                <p><strong>Genres:</strong> {{ movie.genres or 'Non spécifié' }}</p>
+                <p><strong>Date de sortie:</strong> {{ movie.release_date or 'Non spécifiée' }}</p>
+                <p><strong>Note moyenne:</strong> {{ movie.vote_average or 'N/A' }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {% if page > 1 %}
+            <a href="{{ url_for('index', page=page - 1) }}">Précédent</a>
+        {% endif %}
+
+        {% for p in range(1, 3 + 1) %}
+            <a href="{{ url_for('index', page=p) }}" class="{% if p == page %}active{% endif %}">{{ p }}</a>
+        {% endfor %}
+
+        {% if page < total_pages %}
+            <a href="{{ url_for('index', page=page + 1) }}">Suivant</a>
+        {% endif %}
+    </div>
 </body>
 </html>

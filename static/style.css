@@ -2,22 +2,48 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: "Roboto Light", sans-serif;
+}
+
+body {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 5 movies per row */
+    gap: 20px; /* Space between grid items */
+    padding: 20px;
 }
 
 .movie-card {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 16px;
-    margin: 16px;
-    width: 250px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: inline-block;
-    vertical-align: top;
     text-align: center;
+    transition: transform 0.3s;
 }
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
 .movie-poster {
     width: 100%;
+    height: auto;
     border-radius: 8px;
+}
+
+.card-content {
+    text-align: left;
+    padding-top: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
 }
 
 .pagination {

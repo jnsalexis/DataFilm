@@ -2,11 +2,35 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>DataFilm - Liste des Films</title>
+    <title>DataFilm</title>
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <h1>Liste des Films</h1>
+    <a href="http://127.0.0.1:5000/">
+        <h1>D&#9650;T&#9650</h1>
+        <h1>F I L M</h1>
+    </a>
+    <form method="get" action="{{ url_for('get_movies') }}" id="filter-form">
+    <div class="form-group">
+        <input type="text" id="title" name="title" value="{{ title_filter }}" placeholder=" ">
+        <label for="title">Nom du film</label>
+    </div>
+    <div class="form-group">
+        <input type="text" id="actor" name="actor" value="{{ actor_filter }}" placeholder=" ">
+        <label for="actor">Acteur</label>
+    </div>
+    <div class="form-group">
+        <select id="genre" name="genre">
+            <option value="">Tous les genres</option>
+            {% for genre in genres %}
+                <option value="{{ genre['name'] }}" {% if genre['name'] == genre_filter %}selected{% endif %}>{{ genre['name'] }}</option>
+            {% endfor %}
+        </select>
+        <label for="genre">Genre</label>
+    </div>
+    <button type="submit">Filtrer</button>
+</form>
+
     <div id="movies" class="movie-grid">
         {% for movie in movies %}
             <a href="{{ url_for('movie_details', film_id=movie.id) }}" class="movie-link">
@@ -22,18 +46,18 @@
             </a>
         {% endfor %}
     </div>
-    <!-- Pagination -->
+
     <div class="pagination">
         {% if page > 1 %}
-            <a href="{{ url_for('get_movies', page=page - 1) }}">Précédente</a>
+            <a href="{{ url_for('get_movies', page=page - 1, title=title_filter, actor=actor_filter, genre=genre_filter) }}">Précédente</a>
         {% endif %}
 
         {% for p in range(max(1, page - 2), min(total_pages, page + 2) + 1) %}
-            <a href="{{ url_for('get_movies', page=p) }}" class="{% if p == page %}active{% endif %}">{{ p }}</a>
+            <a href="{{ url_for('get_movies', page=p, title=title_filter, actor=actor_filter, genre=genre_filter) }}" class="{% if p == page %}active{% endif %}">{{ p }}</a>
         {% endfor %}
 
         {% if page < total_pages %}
-            <a href="{{ url_for('get_movies', page=page + 1) }}">Suivante</a>
+            <a href="{{ url_for('get_movies', page=page + 1, title=title_filter, actor=actor_filter, genre=genre_filter) }}">Suivante</a>
         {% endif %}
     </div>
 </body>

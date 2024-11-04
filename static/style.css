@@ -10,16 +10,23 @@ body {
     margin-right: 100px;
 }
 
+h1 {
+    color: #5A7684;
+}
+
+h3 {
+    color: #5A7684;
+}
+
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 5 movies per row */
-    gap: 20px; /* Space between grid items */
-    padding: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding-top: 20px;
 }
 
 .movie-card {
     border: 1px solid #ddd;
-    border-radius: 8px;
     padding: 16px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -33,7 +40,6 @@ body {
 .movie-poster {
     width: 100%;
     height: auto;
-    border-radius: 8px;
 }
 
 .card-content {
@@ -48,7 +54,8 @@ a {
 
 .pagination {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 70px;
+    margin-bottom: 100px;
 }
 .pagination a {
     margin: 0 5px;
@@ -56,10 +63,119 @@ a {
     padding: 8px 16px;
     color: #333;
     border: 1px solid #ddd;
-    border-radius: 4px;
 }
 .pagination a.active {
     background-color: #333;
     color: #fff;
     border-color: #333;
+}
+
+#filter-form {
+    max-width: 100%;
+    max-height: 52px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    margin-right: 20px;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    height: 52px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #aaa;
+    background: none;
+    outline: none;
+    color: #333;
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: #5A7684;
+}
+
+input[type="text"]::placeholder {
+    color: transparent;
+}
+
+label {
+    position: absolute;
+    left: 20px;
+    top: 16px;
+    color: #aaa;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.2s ease all;
+}
+
+input[type="text"]:focus + label,
+input[type="text"]:not(:placeholder-shown) + label,
+select:focus + label,
+select:not([value=""]) + label {
+    top: -11px;
+    font-size: 12px;
+    color: #5A7684;
+    background-color: #fff;
+    padding: 5px 10px;
+}
+
+button[type="submit"] {
+    width: 50%;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #5A7684;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #69899a;
+}
+
+.movie-backdrop {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movie-detail-title, .synopsis, .actors {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.back {
+    border: 2px solid #5A7684;
+    padding: 10px 20px;
+    float: right;
+    color: #5A7684;
+    transition: 0.3s ease all;
+}
+
+.back:hover {
+    background-color: #5A7684;
+    color: #fff;
 }

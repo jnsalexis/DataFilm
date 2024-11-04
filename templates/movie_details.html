@@ -8,20 +8,21 @@
 <body>
     <div class="movie-details">
         <img src="{{ movie.backdrop_url }}" alt="Backdrop de {{ movie.title }}" class="movie-backdrop">
-        <h1>{{ movie.title }}</h1>
+        <div class="intro">
+            <h1 class="movie-detail-title">{{ movie.title }}</h1>
+            <a class="back" href="{{ url_for('get_movies') }}">Retour à la liste des films</a>
+        </div>
         <p><strong>Genres:</strong> {{ movie.genres or 'Non spécifié' }}</p>
         <p><strong>Date de sortie:</strong> {{ movie.release_date or 'Non spécifiée' }}</p>
-        <p><strong>Note moyenne:</strong> {{ movie.vote_average or 'N/A' }}</p>
-        <p><strong>Synopsis:</strong> {{ movie.overview or 'Synopsis non disponible' }}</p>
+        <p><strong>Note moyenne:</strong> {{ movie.vote_average or 'N/A' }} / 10</p>
+        <p class="synopsis"><strong>Synopsis:</strong><br/> {{ movie.overview or 'Synopsis non disponible' }}</p>
 
-        <h3>Acteurs</h3>
+        <h3 class="actors">Acteurs</h3>
         <ul>
             {% for actor in actors %}
                 <li>{{ actor.name }}</li>
             {% endfor %}
         </ul>
     </div>
-
-    <a href="{{ url_for('get_movies') }}">Retour à la liste des films</a>
 </body>
 </html>

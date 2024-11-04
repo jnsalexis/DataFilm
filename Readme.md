@@ -39,9 +39,9 @@ http://localhost:5000/
 #### Exemple de requête :
 ```http
 GET /movies?page=2&title=Matrix&actor=Keanu&genre=Sci-Fi
-Exemple de réponse :
-json
-Copier le code
+```
+#### Exemple de réponse :
+```json
 {
   "movies": [
     {
@@ -91,9 +91,9 @@ Copier le code
 #### Exemple de requête :
 ```http 
 GET /movies/1
-Exemple de réponse :
-json
-Copier le code
+```
+#### Exemple de réponse :
+```json
 {
   "movie": {
     "id": 1,
